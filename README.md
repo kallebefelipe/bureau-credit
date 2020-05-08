@@ -70,6 +70,13 @@ Os serviços possuem **deploys independentes**, **totalmente automatizados**, a 
 
 O ORM utilizado junto ao Flask para integrar com o banco de dados PostgreSQL foi o **SQLAlchemy**, que é criado com Python, e fornece **flexibilidade** total do SQL,  e fornece todas as **garantias de segurança** necessárias para proteger as aplicações de ataques ao seus bancos de dados, garantindo a criação de aplicativos simples e seguros.
 
+## Api gateway
+
+Para centralizar as requisições de API, foi usado o [Nginx API Gateway](https://www.nginx.com/products/nginx/). Um **API Gateway** traz inúmeros benefícios para aplicação, tais como: **escalabilidade**, t**olerância a falhas**, **roteamento de rotas**, **limite de consulta aos seviços**, **logs centralizado**. Além disso não usar um API Gate​way na arquitetura de microsserviços deixa o processo de DevOps e gestão de informação bastante difíceis de serem geridos, a medida que a quantidade de microsserviço aumenta.
+
+## Autenticação
+
+Foi criado um servidor [Django](https://www.djangoproject.com/) para centralizar a autenticação dos usuários, nesse servidor está um banco de dados com todos os usuários do sistema, foi utilizado a autenticação do [Django Rest Framework](https://www.django-rest-framework.org/), com o tipo de autenticação **JWT** (Json Web Token). JWT é uma string de caracteres codificados que, caso  cliente e servidor estejam sob HTTPS, permite que somente o servidor que conhece o “segredo” possa ler o conteúdo do token e assim confirmar a autenticidade do cliente.
 
 ## Microsserviço 1
 
@@ -143,14 +150,6 @@ payload = {
   }]
 }
 ```
-
-## Api gateway
-
-Para centralizar as requisições de API, foi usado o [Nginx API Gateway](https://www.nginx.com/products/nginx/). Um **API Gateway** traz inúmeros benefícios para aplicação, tais como: **escalabilidade**, t**olerância a falhas**, **roteamento de rotas**, **limite de consulta aos seviços**, **logs centralizado**. Além disso não usar um API Gate​way na arquitetura de microsserviços deixa o processo de DevOps e gestão de informação bastante difíceis de serem geridos, a medida que a quantidade de microsserviço aumenta.
-
-## Autenticação
-
-Foi criado um servidor [Django](https://www.djangoproject.com/) para centralizar a autenticação dos usuários, nesse servidor está um banco de dados com todos os usuários do sistema, foi utilizado a autenticação do [Django Rest Framework](https://www.django-rest-framework.org/), com o tipo de autenticação **JWT** (Json Web Token). JWT é uma string de caracteres codificados que, caso  cliente e servidor estejam sob HTTPS, permite que somente o servidor que conhece o “segredo” possa ler o conteúdo do token e assim confirmar a autenticidade do cliente.
 
 ## Conteiners
 
