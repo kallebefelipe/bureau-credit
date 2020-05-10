@@ -70,7 +70,7 @@ Os serviços possuem **deploys independentes**, **totalmente automatizados**, a 
 
 O ORM utilizado junto ao Flask para integrar com o banco de dados PostgreSQL foi o **SQLAlchemy**, que é criado com Python, e fornece **flexibilidade** total do SQL,  e fornece todas as **garantias de segurança** necessárias para proteger as aplicações de ataques ao seus bancos de dados, garantindo a criação de aplicativos simples e seguros.
 
-## Api gateway
+## Api Gateway
 
 Para centralizar as requisições de API, foi usado o [Nginx API Gateway](https://www.nginx.com/products/nginx/). Um **API Gateway** traz inúmeros benefícios para aplicação, tais como: **escalabilidade**, t**olerância a falhas**, **roteamento de rotas**, **limite de consulta aos seviços**, **logs centralizado**. Além disso não usar um API Gate​way na arquitetura de microsserviços deixa o processo de DevOps e gestão de informação bastante difíceis de serem geridos, a medida que a quantidade de microsserviço aumenta.
 
@@ -177,7 +177,37 @@ Os dados podem ser consumidos por meio de integração feita a partir de softwar
 * Operadoras de cartão de crédito  
 * Empresas de crédito  
 
-## Tecnologias usadas
+## Executando Projeto
+
+Para executar o projeto é necessário o [docker](https://docs.docker.com/engine/install/ubuntu/) e o [docker-compose](https://docs.docker.com/compose/install/)
+
+Levantando serviços:
+```
+docker-compose up
+```
+
+Endpoints:
+
+* Serviço 1
+```
+http://localhost:5000/pessoa/<CPF>
+```
+
+* Serviço 2
+```
+http://localhost:5001/score/<CPF>
+```
+
+* Serviço 3
+```
+http://localhost:5002/evento/<CPF>
+```
+CPF pré-cadastrados para consulta:
+- 085.218.774-01
+- 085.218.774-02
+- 085.218.774-03
+
+## Tecnologias Usadas
 
 [Python](https://www.python.org/)  
 [Flask](https://flask.palletsprojects.com/en/1.1.x/)  
