@@ -1,4 +1,4 @@
-# bureau-credit
+# Bureau Credit
 
 ## Problema
 
@@ -147,7 +147,11 @@ payload = {
   "compras_cartao": [{
     "data": <datetime>,
     "valor": <number>
-  }]
+  }],
+  "movimentacoes": [
+    "tipo": <choice> (pagamento, transferencia, saque),
+    "valor": <number>
+  ]
 }
 ```
 
