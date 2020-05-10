@@ -2,3 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Database
+.database
