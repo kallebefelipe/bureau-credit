@@ -1,0 +1,62 @@
+version: '3'
+
+volumes:
+  mongo-data:
+    driver: local
+
+services:
+  mongo:
+    image: mongo
+    hostname: mongo
+    restart: on-failure
+    container_name: mongo
+    volumes:
+      - mongo-data:/data/db
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+
+  service1:
+    restart: 'no'
+    container_name: service_1
+    volumes:
+      - ./service_1:/web
+    build:
+      context: ./service_1
+      dockerfile: Dockerfile
+    env_file:
+        - ./service_1/.env
+    ports:
+      - 5000:5000
+
+  service2:
+    restart: 'no'
+    container_name: service_2
+    volumes:
+      - ./service_2:/web
+    build:
+      context: ./service_2
+      dockerfile: Dockerfile
+    env_file:
+        - ./service_2/.env
+    ports:
+      - 5001:5001
+
+
+  service3:
+    restart: 'no'
+    container_name: service_3
+    volumes:
+      - ./service_3:/web
+    build:
+      context: ./service_3
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    env_file:
+      - ./service_3/.env
+    links:
+      - mongo
+    ports:
+      - 5002:5002
